@@ -3,6 +3,7 @@ import React, { useState, useLayoutEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, Input, Text } from "react-native-elements";
 import { auth } from "../firebase";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 
@@ -24,9 +25,9 @@ const RegisterScreen = ({ navigation }) => {
         .then(authUser =>{
             authUser.user.updateProfile({
                 displayName: name,
-                photoURL: imageUrl || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
+                photoURL: imageUrl || <Icon name="user" size="30"/> ,
             });
-        }).catch(error => alert(error.message));
+        }).catch((error) => alert(error.message));
     };
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
